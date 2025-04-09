@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        .back {
+            background: #071f2e;
+        }
+
+        .dropdown:focus-within .dropdown-menu {
+            opacity: 1;
+            transform: translate(0) scale(1);
+            visibility: visible;
+        }
+
+            {% block css %}
+
+            {% endblock %}
+    </style>
+</head>
+
+<body class="back">
+    {% load static %}
+    <header class="text-gray-900 body-font bg-gray-900 ">
+        <div class="relative mx-auto items-center relative px-4 py-2 flex justify-between ">
+
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080.000000 1000.000000"
+                preserveAspectRatio="xMidYMid meet" class="bg-blue-700 rounded-full"
+                style="height: auto; width: 85px; padding: 0; margin: 0;">
+                <g transform="translate(0.000000,1080.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                    <path d="M6300 7753 c-110 -18 -200 -57 -569 -244 -217 -109 -420 -218 -450
+-241 -167 -126 -286 -309 -342 -525 -10 -42 -19 -89 -19 -105 0 -38 40 -78 78
+-78 31 0 72 36 72 63 0 10 9 49 20 89 51 183 156 337 300 434 83 57 803 412
+866 429 81 20 248 20 328 -1 180 -46 362 -198 449 -374 25 -52 54 -122 62
+-155 23 -85 30 -249 16 -340 -33 -201 -147 -395 -293 -498 -60 -42 -370 -207
+-389 -207 -5 0 -9 5 -9 12 0 6 -21 50 -47 97 -57 101 -213 265 -305 319 -179
+106 -377 143 -563 107 -115 -22 -156 -39 -559 -242 -459 -232 -540 -289 -654
+-466 -146 -226 -199 -564 -122 -783 14 -41 16 -74 13 -170 -2 -65 -6 -171 -8
+-234 -2 -63 -6 -160 -9 -215 -3 -55 -7 -120 -9 -145 l-2 -45 50 -8 c94 -14
+236 -22 258 -14 12 5 130 10 262 11 169 2 240 6 243 15 3 8 54 11 172 11 94 0
+181 5 196 11 37 14 275 13 284 -1 4 -6 5 -23 2 -36 l-5 -25 129 7 c114 6 222
+6 454 1 58 -2 66 0 75 20 9 21 16 22 180 27 93 2 199 8 235 13 97 12 210 6
+210 -12 0 -20 31 -26 120 -24 41 1 175 1 298 -1 122 -1 225 0 229 4 4 3 6 32
+6 64 -1 31 1 44 3 27 2 -16 7 -45 10 -63 l5 -33 102 7 c109 8 146 9 162 4 18
+-7 210 11 225 20 9 6 20 4 30 -5 23 -21 197 -34 305 -24 121 11 242 13 286 4
+27 -5 40 -3 52 10 19 18 21 31 17 90 -4 57 -3 161 2 225 3 30 1 107 -3 170
+-10 148 -20 332 -23 439 l-3 83 -74 4 c-94 5 -222 4 -376 -2 -105 -3 -123 -2
+-123 11 0 14 -26 20 -70 17 -8 -1 -107 -3 -220 -5 -113 -3 -241 -11 -285 -18
+-90 -15 -136 -16 -315 -6 -158 9 -269 8 -289 -3 -9 -4 -29 -6 -45 -5 -21 3
+-30 -1 -33 -15 -4 -16 -21 -18 -226 -18 -122 -1 -227 2 -234 6 -9 6 -6 24 12
+74 31 85 50 187 41 221 -12 49 -94 70 -126 33 -5 -7 -21 -55 -34 -107 -13 -52
+-36 -122 -51 -156 -24 -53 -32 -63 -54 -64 -14 0 -287 -3 -606 -5 -319 -2
+-601 -5 -626 -7 -38 -3 -45 0 -45 15 1 17 -15 19 -232 23 -150 4 -255 2 -294
+-5 -34 -7 -77 -9 -96 -5 l-35 6 6 102 c7 122 47 259 104 356 49 82 141 182
+212 230 53 36 352 191 369 191 4 0 23 -31 41 -70 73 -150 221 -302 370 -379
+143 -74 195 -86 376 -86 141 0 168 3 230 23 76 26 776 373 865 430 169 107
+311 303 377 519 24 81 27 102 27 263 1 195 -11 262 -69 401 -138 330 -452 543
+-789 538 -44 -1 -92 -4 -106 -6z m-505 -1387 c138 -38 236 -95 335 -196 55
+-56 133 -173 155 -231 4 -12 -30 -32 -152 -91 -199 -95 -228 -103 -378 -102
+-135 1 -217 23 -323 86 -113 67 -249 219 -295 329 l-15 36 142 71 c77 39 166
+79 196 88 30 9 60 17 65 19 29 10 227 3 270 -9z m-836 -1244 c-1 -38 -2 -42
+-9 -22 -12 37 -12 82 0 75 6 -3 10 -27 9 -53z m2375 42 c86 -24 122 -53 141
+-116 19 -65 19 -122 1 -137 -9 -7 -41 -11 -83 -9 l-68 3 3 57 c5 76 -3 95 -45
+108 -58 20 -65 6 -79 -182 -7 -90 -13 -209 -14 -265 0 -116 13 -143 70 -143
+39 0 62 42 59 108 -2 26 1 57 5 70 5 15 3 22 -6 23 -7 1 -20 2 -28 3 -11 1
+-16 16 -18 54 l-3 53 108 -3 108 -3 -1 -110 c0 -60 -6 -127 -13 -147 -14 -43
+-79 -105 -118 -114 -16 -3 -40 -10 -55 -16 -34 -13 -151 6 -188 29 -36 24 -47
+41 -65 102 -20 65 -22 121 -12 306 14 242 31 286 130 324 64 25 94 25 171 5z
+m1137 -8 c117 -16 143 -27 160 -68 14 -35 8 -213 -9 -244 -6 -12 -25 -27 -42
+-34 l-32 -13 30 -23 c48 -38 62 -105 54 -254 l-7 -125 -72 -3 -73 -3 7 134 c3
+74 3 146 -1 160 -9 37 -44 67 -78 67 l-28 0 -1 -122 c-1 -68 -4 -148 -7 -178
+l-7 -55 -72 -2 -73 -2 0 383 c0 210 3 386 7 389 11 11 131 8 244 -7z m-3955
+-81 c7 -27 21 -75 32 -105 l19 -54 27 71 c15 39 30 87 33 107 l6 37 116 -3
+116 -3 -2 -35 c-2 -31 -1 -216 1 -590 l1 -125 -77 -3 -78 -3 -2 183 -3 183
+-18 -70 c-29 -114 -54 -197 -74 -250 -18 -47 -21 -50 -53 -50 -39 0 -30 -25
+-80 214 -18 87 -66 238 -70 221 -1 -3 -5 -99 -9 -213 -4 -114 -12 -212 -17
+-217 -5 -5 -34 -6 -64 -2 l-55 7 0 374 c0 340 2 374 17 380 9 3 62 4 119 1
+l102 -5 13 -50z m875 37 c0 -9 2 -26 4 -37 1 -11 5 -46 8 -77 4 -32 9 -68 12
+-80 3 -13 7 -39 9 -58 13 -106 37 -277 41 -290 2 -8 7 -31 9 -50 3 -19 11 -65
+17 -103 7 -37 10 -69 8 -71 -2 -2 -40 -1 -84 2 -76 7 -80 8 -83 32 -1 14 -5
+42 -8 63 l-6 37 -54 0 c-41 0 -54 -4 -54 -15 0 -8 -3 -15 -7 -15 -5 0 -6 -23
+-4 -51 l3 -50 -88 4 -89 4 2 29 c6 72 42 340 68 504 8 52 15 124 15 161 0 36
+4 69 9 75 6 5 67 8 140 6 115 -3 131 -5 132 -20z m1290 0 c0 -9 2 -26 4 -37 1
+-11 5 -46 8 -77 4 -32 9 -68 12 -80 3 -13 7 -39 9 -58 13 -106 37 -277 41
+-290 2 -8 7 -31 9 -50 3 -19 11 -65 17 -103 7 -37 10 -69 8 -71 -2 -2 -40 -1
+-84 2 -76 7 -80 8 -83 32 -1 14 -5 42 -8 63 l-6 37 -54 0 c-41 0 -54 -4 -54
+-15 0 -8 -3 -15 -7 -15 -5 0 -6 -23 -4 -51 l3 -50 -88 4 -89 4 2 29 c6 72 42
+340 68 504 8 52 15 124 15 161 0 36 4 69 9 75 6 5 67 8 140 6 115 -3 131 -5
+132 -20z m1216 11 l111 -6 4 -49 c1 -28 1 -54 -2 -59 -3 -4 -38 -9 -77 -10
+l-71 -2 -4 -46 c-2 -25 -2 -67 0 -93 l5 -48 53 0 54 0 0 -60 0 -59 -37 -6
+c-21 -4 -45 -7 -53 -8 -17 -3 -32 -94 -28 -166 l3 -44 88 2 88 2 -3 -58 -3
+-58 -135 -10 c-74 -5 -147 -9 -162 -7 l-28 3 -1 142 c-2 185 -6 361 -13 512
+-3 67 -3 125 1 129 8 8 68 8 210 -1z m-2019 -49 c2 -1 21 -55 43 -119 36 -107
+86 -212 96 -201 2 2 6 78 8 167 l4 164 57 2 c32 1 63 -2 69 -7 9 -7 11 -107 8
+-382 l-5 -373 -26 -6 c-15 -4 -46 -7 -70 -8 -38 -1 -44 3 -62 32 -11 17 -30
+61 -41 97 -12 36 -36 92 -55 125 l-33 59 4 -139 c3 -77 2 -148 -1 -159 -6 -19
+-8 -19 -102 -2 -7 1 -17 7 -22 12 -5 5 -12 165 -16 382 l-7 372 74 -6 c41 -4
+76 -8 77 -10z m1041 -661 c-1 -43 -6 -87 -10 -98 -5 -12 -8 14 -7 70 1 50 4
+93 6 98 10 20 13 0 11 -70z m-1293 -44 c-6 -83 -16 -87 -16 -6 0 37 4 67 10
+67 5 0 8 -25 6 -61z" />
+                    <path d="M8392 5058 c-5 -7 -9 -51 -8 -98 l1 -85 37 -3 c49 -4 74 21 76 77 2
+52 -21 99 -54 111 -33 13 -40 13 -52 -2z" />
+                    <path d="M5257 4795 c-9 -27 -19 -80 -23 -117 l-7 -68 37 0 c34 0 36 2 35 33
+0 17 -6 70 -13 117 l-12 85 -17 -50z" />
+                    <path d="M6547 4795 c-9 -27 -19 -80 -23 -117 l-7 -68 37 0 c34 0 36 2 35 33
+0 17 -6 70 -13 117 l-12 85 -17 -50z" />
+                    <path d="M2429 5225 c-2 -2 -47 -4 -99 -6 -52 -1 -100 -6 -106 -11 -17 -13
+-166 -17 -189 -5 -10 5 -75 11 -142 12 -105 2 -123 0 -128 -14 -2 -9 -7 -238
+-9 -508 l-4 -493 51 -2 c29 -1 139 -2 244 -2 148 -1 193 2 193 12 0 15 1 15
+38 -1 22 -9 53 -11 104 -6 40 4 107 3 148 -1 41 -5 78 -6 81 -4 8 5 183 14
+314 16 50 1 176 -1 280 -5 356 -13 610 -15 643 -6 31 9 32 11 31 62 0 29 2 79
+4 112 7 94 6 744 -1 800 -8 57 13 53 -182 42 -58 -3 -121 -2 -140 2 -19 4 -63
+5 -98 1 -35 -3 -65 -3 -67 1 -4 6 -51 -1 -106 -15 -17 -5 -29 -3 -37 7 -8 10
+-24 12 -54 8 -43 -6 -532 -3 -684 4 -45 2 -84 2 -85 0z m1056 -116 c4 -16 6
+-50 5 -76 -1 -27 -1 -79 0 -118 l1 -70 69 143 70 142 64 0 c36 0 68 -5 71 -10
+8 -13 -23 -110 -35 -110 -4 0 -6 -8 -4 -17 3 -10 -12 -56 -32 -103 -20 -47
+-38 -95 -41 -107 -7 -28 17 -100 79 -241 27 -62 50 -125 51 -140 2 -27 1 -27
+-71 -30 -83 -3 -98 4 -107 51 -8 42 -14 56 -63 157 -41 85 -47 86 -45 13 1 -7
+-7 -13 -16 -13 -14 -1 -14 -2 -1 -10 11 -6 15 -22 14 -52 -1 -24 -2 -67 -3
+-96 l-1 -53 -82 3 -83 3 -3 375 c-1 206 -1 379 1 385 3 6 34 9 80 7 74 -3 76
+-4 82 -33z m-637 -35 c2 -1 21 -55 43 -119 36 -107 86 -212 96 -201 2 2 6 78
+8 167 l4 164 57 2 c32 1 63 -2 69 -7 9 -7 11 -107 8 -382 l-5 -373 -26 -6
+c-15 -4 -46 -7 -70 -8 -38 -1 -44 3 -62 32 -11 17 -30 61 -41 97 -12 36 -36
+92 -55 125 l-33 59 4 -139 c3 -77 2 -148 -1 -159 -6 -19 -8 -19 -102 -2 -7 1
+-17 7 -22 12 -5 5 -12 165 -16 382 l-7 372 74 -6 c41 -4 76 -8 77 -10z m-343
+-372 c-4 -202 -9 -370 -12 -374 -2 -5 -37 -8 -78 -8 l-73 0 1 375 c1 312 4
+375 15 377 8 2 46 1 84 0 l70 -4 -7 -366z m-490 56 c0 -168 2 -309 5 -311 3
+-3 33 -7 68 -10 34 -2 65 -7 69 -11 12 -12 9 -104 -5 -118 -8 -8 -51 -11 -148
+-10 -75 1 -140 4 -145 8 -11 6 -12 207 -2 532 l6 232 76 -2 76 -3 0 -307z" />
+                </g>
+            </svg>
+            <a href="/link"><span class=" ml-3 text-xl title-font font-medium  text-white lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 lg:ml-6 ">Link Manager</span></a> 
+
+            {% if user.is_authenticated %}
+            <nav
+                class="hidden lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 md:flex md:mx-auto md:flex md:items-center md:w-auto md:space-x-6 md:mr-auto md:ml-4 md:py-1 md:pl-4  flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-yellow-900 text-pink-100 text-lg font-medium tracking-wider"
+                    href="{% url 'Profile' request.user %}">Profile</a>
+                <a class="mr-5 hover:text-yellow-900 text-pink-100 text-lg font-medium tracking-wider" href="/link/about">About Us</a>
+                <a class="mr-5 hover:text-yellow-900 text-pink-100 text-lg font-medium tracking-wider" href="/link/contact">Contact Us</a>
+
+            </nav>
+
+            <div class="navbar-menu relative z-50 hidden">
+                <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+                <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+                    <div class="flex items-center mb-8">
+                        <p class="mr-auto text-3xl font-medium leading-none" >
+                            Link Manager
+                        </p>
+                        <button class="navbar-close">
+                            <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div>
+                        <ul>
+                            <li class="mb-1">
+                                <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="{% url 'Profile' request.user %}">Profile</a>
+                            </li>
+                            <li class="mb-1">
+                                <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="/link/about">About Us</a>
+                            </li>
+                            
+                            <li class="mb-1">
+                                <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="/link/contact">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto">
+                        <div class="pt-6">
+                            
+                            <a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="/link/logout">Logout</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <div class=" relative inline-block text-left dropdown z-10" x-data="{ dropdownOpen: true }">
+                <span class="rounded-md shadow-sm"><button @click="dropdownOpen = !dropdownOpen"
+                        class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md  focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
+                        type="button" aria-haspopup="true" aria-expanded="true"
+                        aria-controls="headlessui-menu-items-117">
+                        <span>Welcome {{request.user}}</span>
+                        <svg class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button></span>
+                {% comment %} <div x-show="dropdownOpen" @click="dropdownOpen = false"
+                    class="fixed inset-0 h-full w-full z-10"></div> {% endcomment %}
+                <div x-show="dropdownOpen"
+                    class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
+                    <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
+                        aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
+                        <div class="px-4 py-3">
+                            <p class="text-sm leading-5">Signed in as</p>
+                            <p class="text-sm font-medium leading-5 text-gray-900 truncate">{{user.email}}</p>
+                        </div>
+                        <div class="py-1">
+                            <a href="/link/select" tabindex="0"
+                                class="text-black flex justify-between w-full px-4 py-2 text-sm leading-5 text-left font-normal hover:text-green-700"
+                                role="menuitem">Add Links</a>
+
+                            <a href="/link/updatelinks" tabindex="2"
+                                class="text-black flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:text-green-700"
+                                role="menuitem">Update Links</a>
+
+                            <a href="/link/deletelinks" tabindex="2"
+                                class="text-black flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:text-green-700"
+                                role="menuitem">Delete Links</a>
+
+                            <a href="/link/changepassword" tabindex="1"
+                                class="text-black flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:text-green-700"
+                                role="menuitem">Change Password</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/link/logout"> <button type="button"
+                    class="hidden lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 md:flex md:mx-auto lg:ml-4 md:ml-4 md:flex md:items-center md:w-auto md:space-x-6 inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0  text-sm font-medium">Logout
+                </button></a>
+
+            {% else %}
+            <nav
+                class="hidden lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 md:flex md:mx-auto md:flex md:items-center md:w-auto md:space-x-6 md:mr-auto md:ml-4 md:py-1 md:pl-4  flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-yellow-900 text-pink-100  font-medium" href="/link">Home</a>
+                <a class="mr-5 hover:text-yellow-900 text-pink-100 font-medium" href="/link/about">About Us</a>
+                <a class="mr-5 hover:text-yellow-900 text-pink-100 font-medium" href="/link/contact">Contact Us</a>
+
+            </nav>
+
+            <div class="navbar-menu relative z-50 hidden">
+                <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+                <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+                    <div class="flex items-center mb-8">
+                        <p class="mr-auto text-3xl font-medium leading-none">
+                            Link Manager
+                        </p>
+                        <button class="navbar-close">
+                            <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div>
+                        <ul>
+                            <li class="mb-1">
+                                <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="/link">Home</a>
+                            </li>
+                            <li class="mb-1">
+                                <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="/link/about">About Us</a>
+                            </li>
+                            
+                            <li class="mb-1">
+                                <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="/link/contact">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+
+            <a href="/link/login"> <button
+                    class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0 text-sm font-medium">Login
+
+                </button></a>
+            <a href="/link/signup"> <button type="button"
+                    class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base md:mt-0 text-sm ml-4 font-medium">Signup
+                </button></a>
+
+            {% endif %}
+            <div class="md:hidden">
+                <button class="navbar-burger flex items-center text-blue-600 p-3">
+                    <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <title>Mobile menu</title>
+                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+
+    <!-- <nav class="relative px-4 py-4 flex justify-between items-center bg-white">
+		<a class="text-3xl font-bold leading-none" href="#">
+			<svg class="h-10" alt="logo" viewBox="0 0 100 100">
+				<path d="M100 34.2c-.4-2.6-3.3-4-5.3-5.3-3.6-2.4-7.1-4.7-10.7-7.1-8.5-5.7-17.1-11.4-25.6-17.1-2-1.3-4-2.7-6-4-1.4-1-3.3-1-4.8 0-5.7 3.8-11.5 7.7-17.2 11.5L5.2 29C3 30.4.1 31.8 0 34.8c-.1 3.3 0 6.7 0 10v16c0 2.9-.6 6.3 2.1 8.1 6.4 4.4 12.9 8.6 19.4 12.9 8 5.3 16 10.7 24 16 2.2 1.5 4.4 3.1 7.1 1.3 2.3-1.5 4.5-3 6.8-4.5 8.9-5.9 17.8-11.9 26.7-17.8l9.9-6.6c.6-.4 1.3-.8 1.9-1.3 1.4-1 2-2.4 2-4.1V37.3c.1-1.1.2-2.1.1-3.1 0-.1 0 .2 0 0zM54.3 12.3L88 34.8 73 44.9 54.3 32.4V12.3zm-8.6 0v20L27.1 44.8 12 34.8l33.7-22.5zM8.6 42.8L19.3 50 8.6 57.2V42.8zm37.1 44.9L12 65.2l15-10.1 18.6 12.5v20.1zM50 60.2L34.8 50 50 39.8 65.2 50 50 60.2zm4.3 27.5v-20l18.6-12.5 15 10.1-33.6 22.4zm37.1-30.5L80.7 50l10.8-7.2-.1 14.4z"></path>
+			</svg>
+		</a>
+		<div class="lg:hidden">
+			<button class="navbar-burger flex items-center text-blue-600 p-3">
+				<svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+					<title>Mobile menu</title>
+					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+				</svg>
+			</button>
+		</div>
+		<ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Home</a></li>
+			<li class="text-gray-300">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+				</svg>
+			</li>
+			<li><a class="text-sm text-blue-600 font-bold" href="#">About Us</a></li>
+			<li class="text-gray-300">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+				</svg>
+			</li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Services</a></li>
+			<li class="text-gray-300">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+				</svg>
+			</li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Pricing</a></li>
+			<li class="text-gray-300">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+				</svg>
+			</li>
+			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">Contact</a></li>
+		</ul>
+		<a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="#">Sign In</a>
+		<a class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign up</a>
+	</nav>
+	<div class="navbar-menu relative z-50 hidden">
+		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+			<div class="flex items-center mb-8">
+				<a class="mr-auto text-3xl font-bold leading-none" href="#">
+					<svg class="h-12" alt="logo" viewBox="0 0 100 100">
+						<path d="M100 34.2c-.4-2.6-3.3-4-5.3-5.3-3.6-2.4-7.1-4.7-10.7-7.1-8.5-5.7-17.1-11.4-25.6-17.1-2-1.3-4-2.7-6-4-1.4-1-3.3-1-4.8 0-5.7 3.8-11.5 7.7-17.2 11.5L5.2 29C3 30.4.1 31.8 0 34.8c-.1 3.3 0 6.7 0 10v16c0 2.9-.6 6.3 2.1 8.1 6.4 4.4 12.9 8.6 19.4 12.9 8 5.3 16 10.7 24 16 2.2 1.5 4.4 3.1 7.1 1.3 2.3-1.5 4.5-3 6.8-4.5 8.9-5.9 17.8-11.9 26.7-17.8l9.9-6.6c.6-.4 1.3-.8 1.9-1.3 1.4-1 2-2.4 2-4.1V37.3c.1-1.1.2-2.1.1-3.1 0-.1 0 .2 0 0zM54.3 12.3L88 34.8 73 44.9 54.3 32.4V12.3zm-8.6 0v20L27.1 44.8 12 34.8l33.7-22.5zM8.6 42.8L19.3 50 8.6 57.2V42.8zm37.1 44.9L12 65.2l15-10.1 18.6 12.5v20.1zM50 60.2L34.8 50 50 39.8 65.2 50 50 60.2zm4.3 27.5v-20l18.6-12.5 15 10.1-33.6 22.4zm37.1-30.5L80.7 50l10.8-7.2-.1 14.4z"></path>
+					</svg>
+				</a>
+				<button class="navbar-close">
+					<svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+			<div>
+				<ul>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Home</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">About Us</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Services</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pricing</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Contact</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mt-auto">
+				<div class="pt-6">
+					<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
+					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="#">Sign Up</a>
+				</div>
+				<p class="my-4 text-xs text-center text-gray-400">
+					<span>Copyright © 2021</span>
+				</p>
+			</div>
+		</nav>
+	</div> -->
+
+
+
+<!-- <header class="text-gray-900 body-font bg-gray-900 ">
+    <nav class="relative mx-auto items-center relative px-4 py-4 flex justify-between ">
+	
+			<svg class="h-10" alt="logo" viewBox="0 0 100 100">
+				<path d="M100 34.2c-.4-2.6-3.3-4-5.3-5.3-3.6-2.4-7.1-4.7-10.7-7.1-8.5-5.7-17.1-11.4-25.6-17.1-2-1.3-4-2.7-6-4-1.4-1-3.3-1-4.8 0-5.7 3.8-11.5 7.7-17.2 11.5L5.2 29C3 30.4.1 31.8 0 34.8c-.1 3.3 0 6.7 0 10v16c0 2.9-.6 6.3 2.1 8.1 6.4 4.4 12.9 8.6 19.4 12.9 8 5.3 16 10.7 24 16 2.2 1.5 4.4 3.1 7.1 1.3 2.3-1.5 4.5-3 6.8-4.5 8.9-5.9 17.8-11.9 26.7-17.8l9.9-6.6c.6-.4 1.3-.8 1.9-1.3 1.4-1 2-2.4 2-4.1V37.3c.1-1.1.2-2.1.1-3.1 0-.1 0 .2 0 0zM54.3 12.3L88 34.8 73 44.9 54.3 32.4V12.3zm-8.6 0v20L27.1 44.8 12 34.8l33.7-22.5zM8.6 42.8L19.3 50 8.6 57.2V42.8zm37.1 44.9L12 65.2l15-10.1 18.6 12.5v20.1zM50 60.2L34.8 50 50 39.8 65.2 50 50 60.2zm4.3 27.5v-20l18.6-12.5 15 10.1-33.6 22.4zm37.1-30.5L80.7 50l10.8-7.2-.1 14.4z"></path>
+			</svg>
+            <a href="/link"><span class="ml-3 text-xl title-font font-medium pr-4 text-white">Link Manager</span></a>
+
+		<div class="lg:hidden">
+			<button class="navbar-burger flex items-center text-blue-600 p-3">
+				<svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+					<title>Mobile menu</title>
+					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+				</svg>
+			</button>
+		</div>
+		<ul class="mx-6 hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6 md:mx-auto md:mr-auto md:ml-4 md:py-1 md:pl-4  flex flex-wrap items-center text-base justify-center">
+			<li><a class="mr-5 hover:text-yellow-900 text-pink-100 font-medium" href="#">Home</a></li>
+			
+			<li><a class="mr-5 hover:text-yellow-900 text-pink-100 font-medium" href="#">About Us</a></li>
+			
+			<li><a class="mr-5 hover:text-yellow-900 text-pink-100 font-medium" href="#">Contact</a></li>
+		
+		
+         Dropdown Menu 
+    
+        <div class=" relative inline-block text-left dropdown ml-40  z-10" x-data="{ dropdownOpen: true }">
+            <span class="rounded-md shadow-sm"><button @click="dropdownOpen = !dropdownOpen"
+                    class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md  focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
+                    type="button" aria-haspopup="true" aria-expanded="true"
+                    aria-controls="headlessui-menu-items-117">
+                    <span>Welcome {{request.user}}</span>
+                    <svg class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button></span>
+             <!-- <div x-show="dropdownOpen" @click="dropdownOpen = false"
+                class="fixed inset-0 h-full w-full z-10"></div>  
+            <div x-show="dropdownOpen"
+                class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95 ">
+                <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
+                    aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
+                    <div class="px-4 py-3">
+                        <p class="text-sm leading-5">Signed in as</p>
+                        <p class="text-sm font-medium leading-5 text-gray-900 truncate">{{user.email}}</p>
+                    </div>
+                    <div class="py-1">
+                        <a href="/link/select" tabindex="0"
+                            class="text-black flex justify-between w-full px-4 py-2 text-sm leading-5 text-left font-normal hover:text-green-700"
+                            role="menuitem">Add Links</a>
+
+                        <a href="/link/updatelinks" tabindex="2"
+                            class="text-black flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:text-green-700"
+                            role="menuitem">Update Links</a>
+
+                        <a href="/link/deletelinks" tabindex="2"
+                            class="text-black flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:text-green-700"
+                            role="menuitem">Delete Links</a>
+
+                        <a href="/link/changepassword" tabindex="1"
+                            class="text-black flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:text-green-700"
+                            role="menuitem">Change Password</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</ul>
+
+		<a class="hidden lg:inline-block  inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 ml-4 text-sm font-medium transition duration-200" href="#">Logout</a>
+	</nav>
+	<div class="navbar-menu relative z-50 hidden">
+		<div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+		<nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+			<div class="flex items-center mb-8">
+				<a class="mr-auto text-3xl font-bold leading-none" href="#">
+					<svg class="h-12" alt="logo" viewBox="0 0 100 100">
+						<path d="M100 34.2c-.4-2.6-3.3-4-5.3-5.3-3.6-2.4-7.1-4.7-10.7-7.1-8.5-5.7-17.1-11.4-25.6-17.1-2-1.3-4-2.7-6-4-1.4-1-3.3-1-4.8 0-5.7 3.8-11.5 7.7-17.2 11.5L5.2 29C3 30.4.1 31.8 0 34.8c-.1 3.3 0 6.7 0 10v16c0 2.9-.6 6.3 2.1 8.1 6.4 4.4 12.9 8.6 19.4 12.9 8 5.3 16 10.7 24 16 2.2 1.5 4.4 3.1 7.1 1.3 2.3-1.5 4.5-3 6.8-4.5 8.9-5.9 17.8-11.9 26.7-17.8l9.9-6.6c.6-.4 1.3-.8 1.9-1.3 1.4-1 2-2.4 2-4.1V37.3c.1-1.1.2-2.1.1-3.1 0-.1 0 .2 0 0zM54.3 12.3L88 34.8 73 44.9 54.3 32.4V12.3zm-8.6 0v20L27.1 44.8 12 34.8l33.7-22.5zM8.6 42.8L19.3 50 8.6 57.2V42.8zm37.1 44.9L12 65.2l15-10.1 18.6 12.5v20.1zM50 60.2L34.8 50 50 39.8 65.2 50 50 60.2zm4.3 27.5v-20l18.6-12.5 15 10.1-33.6 22.4zm37.1-30.5L80.7 50l10.8-7.2-.1 14.4z"></path>
+					</svg>
+				</a>
+				<button class="navbar-close">
+					<svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+			<div>
+				<ul>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Home</a>
+					</li>
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">About Us</a>
+					</li>
+					
+					<li class="mb-1">
+						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Contact</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mt-auto">
+				<div class="pt-6">
+					<a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
+					<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="#">Sign Up</a>
+				</div>
+				<p class="my-4 text-xs text-center text-gray-400">
+					<span>Copyright © 2021</span>
+				</p>
+			</div>
+		</nav>
+	</div>
+</header> -->
+    {% block body %}{% endblock %}
+
+    <script>
+       
+        // Burger menus
+        document.addEventListener('DOMContentLoaded', function () {
+            // open
+            const burger = document.querySelectorAll('.navbar-burger');
+            const menu = document.querySelectorAll('.navbar-menu');
+
+            if (burger.length && menu.length) {
+                for (var i = 0; i < burger.length; i++) {
+                    burger[i].addEventListener('click', function () {
+                        for (var j = 0; j < menu.length; j++) {
+                            menu[j].classList.toggle('hidden');
+                        }
+                    });
+                }
+            }
+
+            // close
+            const close = document.querySelectorAll('.navbar-close');
+            const backdrop = document.querySelectorAll('.navbar-backdrop');
+
+            if (close.length) {
+                for (var i = 0; i < close.length; i++) {
+                    close[i].addEventListener('click', function () {
+                        for (var j = 0; j < menu.length; j++) {
+                            menu[j].classList.toggle('hidden');
+                        }
+                    });
+                }
+            }
+
+            if (backdrop.length) {
+                for (var i = 0; i < backdrop.length; i++) {
+                    backdrop[i].addEventListener('click', function () {
+                        for (var j = 0; j < menu.length; j++) {
+                            menu[j].classList.toggle('hidden');
+                        }
+                    });
+                }
+            }
+        });
+        $(".closealertbutton").click(function (e) {
+            // $('.alertbox')[0].hide()
+            // e.preventDefault();
+            pid = $(this).parent().parent().hide(500)
+            console.log(pid)
+            // $(".alertbox", this).hide()
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous">
+        </script>
+
+    {% block js %}
+    {% endblock %}
+</body>
+
+</html>

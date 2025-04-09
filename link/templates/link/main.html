@@ -1,0 +1,478 @@
+{% extends 'link/basic.html' %}
+{% block title %} Profile | {{namers}} {% endblock %}
+{% block css %}
+<style>
+body{
+margin: 0;
+padding: 0;
+background: #dedede;
+}
+
+.ulist{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+}
+
+.ulist li{
+list-style: none;
+}
+
+@media  (max-height: 568px) {
+  .ulist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 17rem;
+  }
+}
+
+@media  (max-width:768px) {
+  .ulist {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 10rem;
+  }
+}
+
+.ulist li a{
+position: relative;
+width: 3.75rem;
+height: 3.75rem;
+display: block;
+text-align: center;
+margin: 0 0.625rem;
+border-radius: 50%;
+padding: 0.375rem;
+box-sizing: border-box;
+text-decoration: none;
+box-shadow: 0 0.625rem 0.94rem #198fb4d6;
+background: linear-gradient(0deg,#1da3cc,#073e4e);
+transition: 0.5s;
+}
+
+ul li a:hover{
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+text-decoration: none;
+}
+
+/* ul li:nth-child(1) a:hover .fab{
+color: #3b5998;
+}  */
+
+ul li a i.fab{
+width: 100%;
+height: 100%;
+display: block;
+background: linear-gradient(0deg,#fff,#ddd);
+border-radius: 50%;
+line-height: calc(3.75rem - 0.75rem);
+font-size: 1.5rem;
+color: #262626;
+transition: 0.5s;
+}
+
+ul a:hover .amazon {
+    color: #405d63 ;
+}
+ 
+ul a:hover .airbnb {
+    color: #FF5A5F ;
+}
+ 
+ul a:hover .blog {
+    color: #007bb6 ;
+}
+
+ul a:hover .book {
+    color: #007bb6 ;
+}
+ 
+ul a:hover .cloud {
+    color: #9aa8a6 ;
+}
+ 
+ul a:hover .codepen {   
+    background-image:linear-gradient(#000000,#000000);
+    transition: 2s;
+    color: #ffffff ;
+}
+ 
+ul a:hover .discord {
+    color: #738ADB ;
+}
+ 
+ul a:hover .email {
+    color: #25a5e0 ;
+}
+ 
+ul a:hover .facebook {
+    color: #4267B2 ;
+}
+ 
+ul a:hover .github {
+    color: #3E2C00 ;
+}
+ul a:hover .google-drive {
+    background-image:linear-gradient(90deg,#1FA463,#FFD045);
+    color:#4688F4;
+}
+ul a:hover .google-forms {
+    color:#673ab7;
+}
+ul a:hover .google-play {
+    background-image:linear-gradient(130deg,#3bccff,#Ff3333);
+    color:#3bccff;
+}
+ul a:hover .hackerrank {
+    color: #1FA463 ;
+}
+ul a:hover .instagram {
+    color: #bc2a8d ;
+}
+ul a:hover .linkedin {
+    color: #0077b5 ;
+}
+ul a:hover .qrcode {
+    color: #da3131 ;
+}
+ul a:hover .quora {
+    color: #b92b27  ;
+}
+ul a:hover .reddit {
+    color: #ff4301  ;
+}
+ul a:hover .slideshare {
+    background-image:linear-gradient(90deg,#136094,#eb672b);
+    color: #104b72 ;
+}
+ul a:hover .snapchat {
+    color: #e0e014 ;
+}
+ul a:hover .spotify {
+    color: #1DB954 ;
+}
+ul a:hover .telegram {
+    color: #0088cc  ;
+}
+ul a:hover .twitch {
+    color: #6441a5 ;
+}
+ul a:hover .twitter {
+    color: 	#1DA1F2 ;
+}
+ul a:hover .whatsapp {
+    color: #25D366 ;
+}
+ul a:hover .website {
+    color: #0cbdf3 ;
+}
+ul a:hover .youtube {
+    color: red ;
+}
+ .tooltip {
+  position: relative;
+  display: inline-block;
+ }
+
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background: linear-gradient(to right, #ffa17f, #00223e);
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%; 
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color:  transparent transparent transparent;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+{% for message in messages %}
+
+<div class="" id="alertbox">
+		<div class="flex justify-between items-center bg-{{ message.tags }}-200 relative text-{{ message.tags }}-600 py-3 px-3" role="alert">
+			
+			<span class="font-semibold text-{{message.tags}}-700">{{message}}</span>
+
+			<span class="absolute top-0 bottom-0 right-0 px-4 py-3 closealertbutton">
+				<svg class="fill-current h-6 w-6 text-white" role="button" xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 20 20">
+					<title>Close</title>
+					<path
+						d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+				</svg>
+			</span>
+		</div>
+	</div>
+{% endfor %}
+
+<div class="icons my-6">
+<ul class="ulist grid grid-cols-2 my-3 gap-3 mt-56 lg:grid-cols-5 lg:gap-4 lg:gap-x-5 lg:my-9 sm:my-14 md:grid-cols-5 sm:grid-cols-3" id="list">
+{% if linkers.amazon|length != 0 %}
+<div class="tooltip">
+  <span class="tooltiptext">Amazon</span>
+  <li><a href="{{linkers.amazon}}" target="_blank" rel="noopener noreferrer" ><i class="fab fa-amazon amazon" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.airbnb|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Airbnb</span>
+    <li><a href="{{linkers.airbnb}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-airbnb airbnb" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.blog|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Blog</span>
+    <li><a href="{{linkers.blog}}" target="_blank" rel="noopener noreferrer"><i class="fab fas fa-blog blog " aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.book|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Book</span>
+    <li><a href="{{linkers.book}}" target="_blank" rel="noopener noreferrer"><i class="fab fa fa-book book" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.cloud|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Cloud</span>
+    <li><a href="{{linkers.cloud}}" target="_blank" rel="noopener noreferrer"><i class="fab fa fa-cloud cloud" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.codepen|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Codepen</span>
+    <li><a href="{{linkers.codepen}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-codepen codepen " aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.discord|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Discord</span>
+    <li><a href="{{linkers.discord}}" target="_blank" rel="noopener noreferrer"><i class="fab  fa-discord discord" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.email|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Email</span>
+    <li><a href="{{linkers.email}}" target="_blank" rel="noopener noreferrer"><i class="fab fas fa-envelope-square email" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.facebook|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Facebook</span>
+    <li><a href="{{linkers.facebook}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook facebook" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.github|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Github</span>
+    <li><a href="{{linkers.github}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github github" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.google_drive|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Google Drive</span>
+    <li><a href="{{linkers.google_drive}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-google-drive google-drive" aria-hidden="true"></i></a></li>
+</div>
+   
+{% endif %}
+
+{% if linkers.google_forms|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Google Forms</span>
+    <li><a href="{{linkers.google_forms}}" target="_blank" rel="noopener noreferrer"><i class="fab fas fa-file-alt google-forms" aria-hidden="true"></i></a></li>
+</div>
+   
+{% endif %}
+ 
+{% if linkers.google_play|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Google Play</span>
+    <li><a href="{{linkers.google_play}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-google-play google-play" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.hackerRank|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">HackerRank</span>
+    <li><a href="{{linkers.hackerRank}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-hackerrank hackerrank" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.instagram|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Instagram</span>
+    <li><a href="{{linkers.instagram}}"  target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram instagram" aria-hidden="true"></i></a></li>
+</div>
+   
+{% endif %}
+ 
+{% if linkers.linkedin|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Linkedin</span>
+    <li><a href="{{linkers.linkedin}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin linkedin" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.qr_code|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">QR-Code</span>
+    <li><a href="{{linkers.qr_code}}" target="_blank" rel="noopener noreferrer"><i class="fab fas fa-qrcode qrcode" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.quora|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Quora</span>
+    <li><a href="{{linkers.quora}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-quora quora" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.reddit|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Reddit</span>
+    <li><a href="{{linkers.reddit}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-reddit reddit" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.slideshare|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Slideshare</span>
+    <li><a href="{{linkers.slideshare}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-slideshare slideshare" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.snapchat|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Snapchat</span>
+    <li><a href="{{linkers.snapchat}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-snapchat snapchat" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.spotify|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Spotify</span>
+    <li><a href="{{linkers.spotify}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-spotify spotify" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.telegram|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Telegram</span>
+    <li><a href="{{linkers.telegram}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram telegram" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.twitch|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Twitch</span>
+    <li><a href="{{linkers.twitch}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitch twitch" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.twitter|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Twitter</span>
+    <li><a href="{{linkers.twitter}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter twitter" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.whatsapp|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Whatsapp</span>
+    <li><a href="{{linkers.whatsapp}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp whatsapp" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+
+{% if linkers.website|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">Website</span>
+    <li><a href="{{linkers.website}}" target="_blank" rel="noopener noreferrer"><i class="fab fas fa-globe website" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+{% if linkers.youtube|length != 0 %}
+<div class="tooltip">
+    <span class="tooltiptext">YouTube</span>
+    <li><a href="{{linkers.youtube}}" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube youtube" aria-hidden="true"></i></a></li>
+</div>
+    
+{% endif %}
+ 
+</ul>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+console.log("working")
+var element=document.getElementById("list");
+var numberOfChildren = element.getElementsByTagName('li').length
+console.log(numberOfChildren)
+if (numberOfChildren <= 15){
+    document.getElementById("list").classList.remove("grid");
+    document.getElementById("list").classList.remove("grid-cols-5");
+    document.getElementById("list").classList.remove("gap-4");
+    document.getElementById("list").classList.remove("gap-x-6");
+}
+</script>
+
+{% endblock %}

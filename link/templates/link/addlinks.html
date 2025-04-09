@@ -1,0 +1,399 @@
+{% extends 'link/basic.html' %}
+{% block title %} Add Links {% endblock %}
+{% block css %}
+
+{% endblock %}
+
+{% block body %}
+{% for message in messages %}
+
+
+<div class="" id="alertbox">
+		<div class="flex justify-between items-center bg-{{ message.tags }}-200 relative text-{{ message.tags }}-600 py-3 px-3" role="alert">
+			
+			<span class="font-semibold text-{{message.tags}}-700">{{message}}</span>
+
+			<span class="absolute top-0 bottom-0 right-0 px-4 py-3 closealertbutton">
+				<svg class="fill-current h-6 w-6 text-white" role="button" xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 20 20">
+					<title>Close</title>
+					<path
+						d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+				</svg>
+			</span>
+		</div>
+	</div>
+{% endfor %}
+<form action="{% url 'Profile' request.user %}" method="POST">{% csrf_token %}
+    {% if amazon %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold">
+            <span> {{amazon}} </span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Amazonlink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if airbnb %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{airbnb}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Airbnblink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if blog %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{blog}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4  space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Bloglink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if book %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{book}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Booklink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if cloud %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{cloud}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Cloudlink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if codepen %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{codepen}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Codepenlink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if discord %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{discord}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Discordlink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if email %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{email}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Emaillink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if facebook %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{facebook}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Facebooklink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if github %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{github}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Githublink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if google_drive %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{google_drive}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Gdrivelink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if google_forms %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{google_forms}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Gformslink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if google_play %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{google_play}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Gplaylink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if hackerRank %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{hackerRank}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Hackerranklink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if instagram %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{instagram}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Instagramlink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkedin %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{linkedin}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Linkedinlink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if qr_code %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{qr_code}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Qcodelink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if quora %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{quora}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Quoralink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if reddit %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{reddit}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Redditlink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if slideshare %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{slideshare}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Slidesharelink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if snapchat %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{snapchat}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Snapchatlink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if spotify %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{spotify}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Spotifylink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if telegram %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{telegram}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Telegramlink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if twitch %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{twitch}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." required style="width: 65rem;"
+                name="Twitchlink" />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if twitter %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{twitter}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Twitterlink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if whatsapp %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{whatsapp}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Whatsapplink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if website %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{website}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Websitelink" required />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if youtube %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>{{youtube}}</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Youtubelink" required />
+        </div>
+
+    </div>
+    {% endif %}
+    
+    
+    <button
+        class="bg-blue-500 hover:bg-blue-700 text-white  font-bold ml-4 py-2 px-4 border border-blue-700 rounded mt-6 ml-2"
+        type="submit">Add Links
+    </button>
+</form>
+
+{% endblock %}

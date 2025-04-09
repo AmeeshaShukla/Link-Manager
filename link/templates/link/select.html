@@ -1,0 +1,598 @@
+{% extends 'link/basic.html' %}
+
+{% block title %} Select Links {% endblock %}
+
+{% block css %}
+
+.custom-label input:checked + svg {
+display: block !important;
+}
+
+{% endblock %}
+
+{% block body %}
+{% for message in messages %}
+
+
+<div class="" id="alertbox">
+    <div class="flex justify-between items-center bg-{{ message.tags }}-200 relative text-{{ message.tags }}-600 py-3 px-3"
+        role="alert">
+
+        <span class="font-semibold text-{{message.tags}}-700">{{message}}</span>
+
+        <span class="absolute top-0 bottom-0 right-0 px-4 py-3 closealertbutton">
+            <svg class="fill-current h-6 w-6 text-white" role="button" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20">
+                <title>Close</title>
+                <path
+                    d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+            </svg>
+        </span>
+    </div>
+</div>
+{% endfor %}
+
+<div class="flex flex-col w-full shadow-lg overflow-hidden m-auto pb-4">
+    <div class="justify-around flex flex-row items-baseline ">
+        <h1 class="text-lg mt-2 ml-3 text-pink-100" id="heading">SELECT THE WEBSITES BELOW TO ADD.</h1>
+
+    </div>
+    
+    <form action="/link/addlinks/" class="ml-3 " method="POST" id="form">{% csrf_token %}
+
+        
+        <div class="grid grid-cols-2" id="select">
+
+        {% if linkers.airbnb|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Airbnb">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100"> Airbnb</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.amazon|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Amazon">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100"> Amazon Product</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.blog|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Blog">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Blog</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.book|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Book">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Book</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.cloud|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Cloud">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Cloud</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.codepen|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Codepen">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Codepen</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.discord|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Discord">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Discord</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.email|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Email">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Email</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.facebook|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Facebook">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Facebook</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.github|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Github">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Github</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.google_drive|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Google-Drive">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Google-Drive</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.google_forms|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Google-Forms">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Google-Forms</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.google_play|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Google-Play">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Google-Play</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.hackerRank|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="HackerRank">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">HackerRank</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.instagram|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Instagram">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Instagram</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.linkedin|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="LinkedIn">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">LinkedIn</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.qr_code|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="QR-Code">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">QR-Code</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.quora|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Quora">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Quora</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.reddit|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Reddit">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Reddit</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.slideshare|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Slideshare">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Slideshare</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.snapchat|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Snapchat">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Snapchat</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.spotify|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Spotify">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Spotify</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.telegram|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Telegram">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Telegram</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.twitch|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Twitch">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Twitch</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.twitter|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Twitter">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Twitter</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.whatsapp|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Whatsapp">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Whatsapp</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.website|length == 0 %}   
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="Website">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">Website</span>
+        </label>
+        {% endif %}
+
+        {% if linkers.youtube|length == 0 %}
+        <label class="custom-label flex mt-2 ml-3">
+            <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                <input type="checkbox" class="hidden" name="YouTube">
+                <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                    <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                        font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                        <path d="M0 172V0h172v172z" />
+                        <path
+                            d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                            fill="currentColor" stroke-width="1" />
+                    </g>
+                </svg>
+            </div>
+            <span class="select-none text-pink-100">YouTube</span>
+        </label>
+        {% endif %}
+    </div>  
+        
+
+        <!-- <div class="grid grid-cols-2">
+            {% for i in dict1 %}
+            <label class="custom-label flex mt-2 ml-3">
+                <div class="bg-white shadow w-6 h-6 p-1 flex justify-center items-center mr-2">
+                    <input type="checkbox" class="hidden" name="{{i}}">
+                    <svg class="hidden w-4 h-4 text-green-600 pointer-events-none" viewBox="0 0 172 172">
+                        <g fill="none" stroke-width="none" stroke-miterlimit="10" font-family="none" font-weight="none"
+                            font-size="none" text-anchor="none" style="mix-blend-mode:normal">
+                            <path d="M0 172V0h172v172z" />
+                            <path
+                                d="M145.433 37.933L64.5 118.8658 33.7337 88.0996l-10.134 10.1341L64.5 139.1341l91.067-91.067z"
+                                fill="currentColor" stroke-width="1" />
+                        </g>
+                    </svg>
+                </div>
+                <span class="select-none text-pink-100"> {{i}}</span>
+            </label>
+            {% endfor %}
+        </div> -->
+        <button
+            class="bg-blue-500 hover:bg-blue-700 text-white  font-bold py-2 px-4 border border-blue-700 rounded mt-6 ml-2"
+            type="submit" id="button">
+            Save
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}
+{% block js %}
+<script>
+console.log("working")
+var element=document.getElementById("select");
+var numberOfChildren = element.getElementsByTagName('label').length
+console.log(element)
+console.log(numberOfChildren)
+if (numberOfChildren == 0){
+    head=document.getElementById("heading")
+    head.innerHTML=`<b>You have already added all the links. <a href="/link/updatelinks" class="text-blue-700 ">Update</a> or <a href="/link/deletelinks" class="text-blue-700">Delete</a> your links</b>`
+    elem=document.getElementById('form')
+    elem.removeChild(document.getElementById('button'))
+
+} 
+</script>
+
+{% endblock %}

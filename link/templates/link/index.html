@@ -1,0 +1,48 @@
+{% extends 'link/basic.html' %}
+{% block title %} Home {% endblock %}
+{% block css %}
+
+{% endblock %}
+
+{% block body %}
+{% for message in messages %}
+
+
+<div class="" id="alertbox">
+		<div class="flex justify-between items-center bg-{{ message.tags }}-200 relative text-{{ message.tags }}-600 py-3 px-3" role="alert">
+			
+			<span class="font-semibold text-{{message.tags}}-700">{{message}}</span>
+
+			<span class="absolute top-0 bottom-0 right-0 px-4 py-3 closealertbutton">
+				<svg class="fill-current h-6 w-6 text-white" role="button" xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 20 20">
+					<title>Close</title>
+					<path
+						d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+				</svg>
+			</span>
+		</div>
+	</div>
+{% endfor %}
+
+ <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-20">
+        <h2 class="text-xs text-yellow-400 tracking-widest font-medium title-font mb-1">SINGLE LINK FOR ALL YOUR LINKS</h2>
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Tired of Forgetting Posting all your links. Welcome to our Website made for the Creators like you.</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base text-white">Here you can add all your links with selecting different websites below and then you just need to share the link of our webpage and your task is done. Now any one opening that link will see all your links and can easily navigate to your different social media handles and other pages as well.</p>
+      </div>
+      {% if user.is_authenticated %}
+        <a href="/link/select"><button class="flex mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg items-center">Add Links
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button></a>
+      {% else %}
+        <a href="/link/signup"><button class="flex mx-auto mt-16 text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg items-center">Signup
+        </button></a>
+      {% endif %}
+    </div>
+  </section>
+
+{% endblock %}

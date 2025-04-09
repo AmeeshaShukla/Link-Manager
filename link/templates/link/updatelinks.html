@@ -1,0 +1,391 @@
+{% extends 'link/basic.html' %}
+{% block title %} Update Links {% endblock %}
+{% block css %}
+
+{% endblock %}
+
+{% block body %}
+{% for message in messages %}
+
+
+<div class="" id="alertbox">
+		<div class="flex justify-between items-center bg-{{ message.tags }}-200 relative text-{{ message.tags }}-600 py-3 px-3" role="alert">
+
+			<span class="font-semibold text-{{message.tags}}-700">{{message}}</span>
+
+			<span class="absolute top-0 bottom-0 right-0 px-4 py-3 closealertbutton">
+				<svg class="fill-current h-6 w-6 text-white" role="button" xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 20 20">
+					<title>Close</title>
+					<path
+						d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+				</svg>
+			</span>
+		</div>
+	</div>
+{% endfor %}
+
+<form action="{% url 'Profile' request.user %}" method="POST">{% csrf_token %}
+    {% if linkers.amazon|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold">
+            <span> Amazon </span>
+        </div>
+
+
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="" style="width: 65rem;"
+                name="Amazonlink" value="{{linkers.amazon}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.airbnb|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Airbnb</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Airbnblink" value="{{linkers.airbnb}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.blog|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Blog</span>
+        </div>
+        <div class="flex bg-gray-100 p-4  space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Bloglink" value="{{linkers.blog}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.book|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Book</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Booklink" value="{{linkers.book}}" />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.cloud|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Cloud</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Cloudlink" value="{{linkers.cloud}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.codepen|length != 0 %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Codepen</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Codepenlink" value="{{linkers.codepen}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.discord|length != 0 %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Discord</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Discordlink" value="{{linkers.discord}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.email|length != 0 %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Email</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Emaillink" value="{{linkers.email}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.facebook|length != 0 %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Facebook</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Facebooklink" value="{{linkers.facebook}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.github|length != 0 %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Github</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Githublink" value="{{linkers.github}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.google_drive|length != 0 %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Google Drive</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Gdrivelink" value="{{linkers.google_drive}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.google_forms|length != 0 %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Google Forms</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Gformslink" value="{{linkers.google_forms}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.google_play|length != 0 %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Google play</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Gplaylink" value="{{linkers.google_play}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.hackerRank|length != 0 %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>HackerRank</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Hackerranklink" value="{{linkers.hackerRank}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.instagram|length != 0 %}
+    <div class="flex items-center p-6 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Instagram</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Instagramlink" value="{{linkers.instagram}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.linkedin|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Linkedin</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Linkedinlink" value="{{linkers.linkedin}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.qr_code|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Qr Code</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Qcodelink" value="{{linkers.qr_code}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.quora|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Quora</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Quoralink" value="{{linkers.quora}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.reddit|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Reddit</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Redditlink" value="{{linkers.reddit}}" />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.slideshare|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Slideshare</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Slidesharelink" value="{{linkers.slideshare}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.spotify|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Spotify</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Spotifylink" value="{{linkers.spotify}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+
+    {% if linkers.telegram|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Telegram</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Telegramlink" value="{{linkers.telegram}}" />
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.twitch|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Twitch</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Twitchlink" value="{{linkers.twitch}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.twitter|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Twitter</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Twitterlink" value="{{linkers.twitter}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.whatsapp|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Whatsapp</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Whatsapplink" value="{{linkers.whatsapp}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.website|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Website</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Websitelink" value="{{linkers.website}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+
+    {% if linkers.youtube|length != 0 %}
+    <div class="flex items-center p-5 space-x-6 rounded-xl shadow-lg mt-3.5 mx-4" style="background-color: #b5deff;">
+        <div class="flex py-3 px-4 bg-green-200 rounded-lg text-gray-500 font-semibold ">
+            <span>Youtube</span>
+        </div>
+        <div class="flex bg-gray-100 p-4 w-4/5 space-x-4 rounded-lg">
+            <input class="bg-gray-100 outline-none" type="text" placeholder="Enter the Link..." style="width: 65rem;"
+                name="Youtubelink" value="{{linkers.youtube}}"/>
+        </div>
+
+    </div>
+    {% endif %}
+    
+    
+    <button
+        class="bg-blue-500 hover:bg-blue-700 text-white  font-bold ml-4 py-2 px-4 border border-blue-700 rounded mt-6 ml-2"
+        type="submit">Update Links
+    </button>
+</form>
+
+{% endblock %}
